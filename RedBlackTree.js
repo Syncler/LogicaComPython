@@ -34,7 +34,13 @@ class RedBlackTree {
             return  new Node(data, 1)
         }
 
-        //Efetuando a comparação e as chamadas recusivas com a função auxInsertRec
+       
+        
+        /**
+         * Efetuando a comparação e as chamadas recusivas com a função auxInsertRec
+         * os sinais  de menor(<) ou maior indica se o novo nó sera inserido a esquerda
+         * ou a direita
+         * */
         if(data < root.data) {
             root.left = this.auxInsertRec(root.left, data)
         }else if(data > data.root) {
@@ -43,14 +49,29 @@ class RedBlackTree {
         
             return root
         }
-
-
-
-
         return root;
+
+        //Teste para impressão da arvore em ASCII
+        printTree(node = this.root, level = 0; prefix = 'Root') {
+            if(node !== null){
+                console.log(' '. repeat(level) + prefix + node.data + (node.color === 0 ? ' (B)' : '(R)'));
+                this.printTree(node.left, level + 1, 'L: ');
+                this.printTree(node.right, level + 1, 'R: ')
+            }
+        }
         
      }
-    
+    //Vê se funciona isso ae
+    const tree = new RedBlackTree();
 
+    tree.insert(10);
+    tree.insert(5);
+    tree.insert(18);
+    tree.insert(22);
+    tree.insert(7);
+    tree.insert(9);
+
+    //Será que vai sair a arvore em ASCII
+    tree.printTree();
     // Outras operações podem ser implementadas aqui
 }
